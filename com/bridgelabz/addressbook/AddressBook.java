@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class AddressBook {
     static Scanner sc = new Scanner(System.in);
-
+    static ContactPerson cp = new ContactPerson();
     public static void main(String[] args) {
         System.out.println("Welcome to the Address Book program");
 
@@ -41,7 +41,7 @@ public class AddressBook {
         System.out.println("Enter Email Id");
         String Email_Id = sc.next();
 
-        ContactPerson cp = new ContactPerson();
+
         cp.setFirst_Name(First_Name);
         cp.setLast_Name(Last_Name);
         cp.setAddress(Address);
@@ -137,6 +137,7 @@ public class AddressBook {
             System.out.println("\nInvalid Input.\nPlease try again!");
         }
     }
+
     public void deleteContact(ContactPerson cp) {
         cp.setFirst_Name(null);
         cp.setLast_Name(null);
@@ -149,5 +150,8 @@ public class AddressBook {
 
         System.out.println("\n\nHere is the updated Address Book.");
        displayContact(cp);
-    }
+     }
+   }    
 }
+
+
