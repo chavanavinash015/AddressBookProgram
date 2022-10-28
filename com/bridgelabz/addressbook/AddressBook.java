@@ -53,6 +53,7 @@ public class AddressBook {
 
         displayContact(cp);
         editContact(cp);
+        deleteContact(cp);
 
     }
 
@@ -62,54 +63,65 @@ public class AddressBook {
     }
     public void editContact(ContactPerson cp) {
         int choice = 0;
-        while (choice < 1 || choice > 4) {
+        while (choice < 1 || choice > 8) {
             System.out.println("\nWhat would you like to update?");
             System.out.println("1. Name");
-            System.out.println("2. Phone Number");
-            System.out.println("3. Email Id");
-            System.out.println("4. Address");
+            System.out.println("2. Last Name");
+            System.out.println("3. Address");
+            System.out.println("4. City Name");
+            System.out.println("5. State Name");
+            System.out.println("6. Zip Code");
+            System.out.println("7. Phone Number");
+            System.out.println("8. Email Id");
             System.out.print("\nEnter your choice : ");
             choice = sc.nextInt();
 
-            if (!(choice >=1 && choice <= 4))
+            if (!(choice >=1 && choice <= 8))
                 System.out.println("\nInvalid choice!\nPlease try again.\n");
         }
 
         switch (choice) {
             case 1 :
                 System.out.print("Enter the updated First Name :	");
-                String First_Name = sc.nextLine();
-                System.out.print("Enter the updated Last Name :	");
-                String Last_Name = sc.nextLine();
+                String First_Name = sc.next();
                 cp.setFirst_Name(First_Name);
+                break;
+            case 2 :
+                System.out.print("Enter the updated Last Name :	");
+                String Last_Name = sc.next();
                 cp.setLast_Name(Last_Name);
                 break;
-
-            case 2 :
+            case 3 :
+                System.out.print("Enter the updated Address :	");
+                String Address = sc.nextLine();
+                cp.setAddress(Address);
+                break;
+            case 4 :
+                System.out.print("Enter the updated City :	");
+                String City_Name = sc.next();
+                cp.setCity_Name(City_Name);
+                break;
+            case 5 :
+                System.out.print("Enter the updated State :	");
+                String State_Name = sc.next();
+                cp.setState_Name(State_Name);
+                break;
+            case 6 :
+                System.out.print("Enter the updated zip :	");
+                int Zip_Code = sc.nextInt();
+                cp.setZip_Code(Zip_Code);
+                break;
+            case 7 :
                 System.out.print("Enter the updated Phone Number :	");
                 double Phone_Number = sc.nextDouble();
                 cp.setPhone_Number(Phone_Number);
                 break;
-
-            case 3 :
+            case 8 :
                 System.out.print("Enter the updated Email Address :	");
                 String Email_Id = sc.next();
                 cp.setEmail_Id(Email_Id);
                 break;
-
-            case 4 :
-                System.out.print("Enter the updated City :	");
-                String City_Name = sc.nextLine();
-                System.out.print("Enter the updated State :	");
-                String State_Name = sc.nextLine();
-                System.out.print("Enter the updated zip :	");
-                int Zip_Code = sc.nextInt();
-                cp.setCity_Name(City_Name);
-                cp.setState_Name(State_Name);
-                cp.setZip_Code(Zip_Code);
-                break;
         }
-
         System.out.println("\nIs there anything else you'd like to update?");
         System.out.print("Enter 'Yes' or 'No' : ");
         char continueEdit = sc.next().charAt(0);
@@ -128,6 +140,7 @@ public class AddressBook {
     public void deleteContact(ContactPerson cp) {
         cp.setFirst_Name(null);
         cp.setLast_Name(null);
+        cp.setAddress(null);
         cp.setCity_Name(null);
         cp.setState_Name(null);
         cp.setZip_Code(0);
