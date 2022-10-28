@@ -53,6 +53,7 @@ public class AddressBook {
 
         displayContact(cp);
         editContact(cp);
+        deleteContact(cp);
 
     }
 
@@ -60,7 +61,6 @@ public class AddressBook {
         System.out.println(cp);
 
     }
-
     public void editContact(ContactPerson cp) {
         int choice = 0;
         while (choice < 1 || choice > 8) {
@@ -122,7 +122,6 @@ public class AddressBook {
                 cp.setEmail_Id(Email_Id);
                 break;
         }
-
         System.out.println("\nIs there anything else you'd like to update?");
         System.out.print("Enter 'Yes' or 'No' : ");
         char continueEdit = sc.next().charAt(0);
@@ -138,6 +137,21 @@ public class AddressBook {
             System.out.println("\nInvalid Input.\nPlease try again!");
         }
     }
-    
+
+    public void deleteContact(ContactPerson cp) {
+        cp.setFirst_Name(null);
+        cp.setLast_Name(null);
+        cp.setAddress(null);
+        cp.setCity_Name(null);
+        cp.setState_Name(null);
+        cp.setZip_Code(0);
+        cp.setPhone_Number(0);
+        cp.setEmail_Id(null);
+
+        System.out.println("\n\nHere is the updated Address Book.");
+       displayContact(cp);
+     }
+   }    
 }
+
 
