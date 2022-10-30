@@ -6,6 +6,6 @@ public class AddressBookMain {
         System.out.println("Welcome to the Address Book program");
 
         AddressBook ad = new AddressBook();
-        ad.addContact();
+        ad.manageAddressBook();
     }
 }
