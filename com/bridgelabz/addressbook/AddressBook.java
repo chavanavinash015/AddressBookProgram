@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class AddressBook {
     static Scanner sc = new Scanner(System.in);
+
     ArrayList<ContactPerson> contactList = new ArrayList<>();
 
     public void manageAddressBook() {
@@ -52,6 +53,11 @@ public class AddressBook {
 
     public ContactPerson getContactToModify(String name) {
         ContactPerson cp = null;
+        
+    static ContactPerson cp = new ContactPerson();
+    public static void main(String[] args) {
+        System.out.println("Welcome to the Address Book program");
+
 
         for(int i = 0; i < contactList.size(); i++) {
             ContactPerson temp = contactList.get(i);
@@ -91,7 +97,7 @@ public class AddressBook {
         System.out.println("Enter Email Id");
         String Email_Id = sc.next();
 
-        ContactPerson cp = new ContactPerson();
+
         cp.setFirst_Name(First_Name);
         cp.setLast_Name(Last_Name);
         cp.setAddress(Address);
@@ -212,6 +218,7 @@ public class AddressBook {
             System.out.println("\nInvalid Input.\nPlease try again!");
         }
     }
+
     public void deleteContact() {
         ContactPerson cp = null;
         String name = null;
@@ -229,3 +236,22 @@ public class AddressBook {
         contactList.remove(cp);
     }
 }
+
+
+    public void deleteContact(ContactPerson cp) {
+        cp.setFirst_Name(null);
+        cp.setLast_Name(null);
+        cp.setAddress(null);
+        cp.setCity_Name(null);
+        cp.setState_Name(null);
+        cp.setZip_Code(0);
+        cp.setPhone_Number(0);
+        cp.setEmail_Id(null);
+
+        System.out.println("\n\nHere is the updated Address Book.");
+       displayContact(cp);
+     }
+   }    
+}
+
+
