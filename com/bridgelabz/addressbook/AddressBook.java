@@ -5,9 +5,9 @@ import java.util.Scanner;
 
 public class AddressBook {
     static Scanner sc = new Scanner(System.in);
-    ArrayList<ContactPerson> contactList = new ArrayList<>();
 
-    public void manageAddressBook() {
+
+    public void manageAddressBookList(String addressBook, ArrayList<ContactPerson> contactList) {
         int  choice = 0;
 
         do {
@@ -28,19 +28,19 @@ public class AddressBook {
             switch (choice)
             {
                 case 1 :
-                    addContact();
+                    addContact(contactList);
                     break;
 
                 case 2 :
-                    editContact();
+                    editContact(contactList);
                     break;
 
                 case 3 :
-                    deleteContact();
+                    deleteContact(contactList);
                     break;
 
                 case 4 :
-                    displayAddressBook();
+                    displayAddressBook(addressBook, contactList);
                     break;
 
                 case 5 :
@@ -50,7 +50,7 @@ public class AddressBook {
         }while(choice != 5);
     }
 
-    public ContactPerson getContactToModify(String name) {
+    public ContactPerson getContactToModify(String name, ArrayList<ContactPerson> contactList) {
         ContactPerson cp = null;
 
         for(int i = 0; i < contactList.size(); i++) {
@@ -62,7 +62,7 @@ public class AddressBook {
         return cp;
     }
 
-    public void addContact() {
+    public void addContact(ArrayList<ContactPerson> contactList) {
 
 //        String First_Name;
 //        String Last_Name;
@@ -103,8 +103,8 @@ public class AddressBook {
 
         contactList.add(cp);
     }
-    @Override
-    public String toString() {
+
+    public String toString(ArrayList<ContactPerson> contactList) {
         return "\nAddressBook [\nContact List" + contactList + "\n]";
     }
 
@@ -112,25 +112,25 @@ public class AddressBook {
         System.out.println(cp);
     }
 
-    public void displayAddressBook() {
+    public void displayAddressBook(String addressBook, ArrayList<ContactPerson> contactList) {
         System.out.println("\n\n------- Address Book -------");
         for (int i = 0; i < contactList.size(); i++)
             System.out.println("\n"+contactList.get(i));
         System.out.println();
     }
 
-    public void editContact() {
+    public void editContact(ArrayList<ContactPerson> contactList) {
         ContactPerson cp = null;
         String name = null;
 
         System.out.print("\nEnter the First Name of the contact you want to edit : ");
         name = sc.next();
         while (cp == null) {
-            cp = getContactToModify(name);
+            cp = getContactToModify(name, contactList);
             if (cp == null) {
                 System.out.print("\nNo such entry exists!\nPlease enter a valid First Name : ");
                 name = sc.next();
-                cp = getContactToModify(name);
+                cp = getContactToModify(name, contactList);
             }
         }
         makeEdits(cp);
@@ -212,20 +212,22 @@ public class AddressBook {
             System.out.println("\nInvalid Input.\nPlease try again!");
         }
     }
-    public void deleteContact() {
+    public void deleteContact(ArrayList<ContactPerson> contactList) {
         ContactPerson cp = null;
         String name = null;
 
         System.out.print("\nEnter the First Name of the contact you want to delete : ");
         name = sc.next();
         while (cp == null) {
-            cp = getContactToModify(name);
+            cp = getContactToModify(name, contactList);
             if (cp == null) {
                 System.out.println("\nNo such entry exists!\nPlease enter a valid First Name.");
                 name = sc.next();
-                cp = getContactToModify(name);
+                cp = getContactToModify(name, contactList);
             }
         }
         contactList.remove(cp);
     }
+
+
 }
